@@ -46,18 +46,21 @@ export const Navbar: React.FC<NavbarProps> = ({ inquiryCount, onOpenInquiry }) =
         </a>
 
         {/* Minimal Navigation */}
-        <nav className="hidden lg:flex items-center gap-9 text-[11px] tracking-[0.22em] uppercase font-medium text-[#403e39]">
-          <a href="#ceramics" className="hover:text-[#141414] transition-colors py-1">
-            Ceramics
+        <nav className="hidden lg:flex items-center gap-8 text-[11px] tracking-[0.22em] uppercase font-medium text-[#403e39]">
+          <a href="#catalog" className="hover:text-[#141414] transition-colors py-1">
+            Collection (10)
           </a>
           <a href="#tshirts" className="hover:text-[#141414] transition-colors py-1">
             Clothes & Tees
           </a>
           <a href="#bags" className="hover:text-[#141414] transition-colors py-1">
-            Bags
+            Handmade Bags
           </a>
           <a href="#drawings" className="hover:text-[#141414] transition-colors py-1">
             Drawings
+          </a>
+          <a href="#ceramics" className="hover:text-[#141414] transition-colors py-1">
+            Sculpture
           </a>
           <a href="#archetypes" className="hover:text-[#141414] transition-colors py-1">
             The 5 Figures

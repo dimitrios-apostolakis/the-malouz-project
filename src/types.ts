@@ -20,6 +20,7 @@ export interface ProductItem {
   inStock: boolean;
   featured?: boolean;
   imageUrl?: string;
+  instagramUrl?: string;
 }
 
 export interface ArchetypeDetail {

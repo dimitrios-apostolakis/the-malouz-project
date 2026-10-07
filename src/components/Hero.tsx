@@ -110,8 +110,8 @@ export const Hero: React.FC<HeroProps> = ({ onSelectArchetype }) => {
           <div className="lg:col-span-7 space-y-3">
             <div className="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-[#ede8df] border border-[#e4ded4] shadow-sm">
               <img
-                src="/images/hero.jpg"
-                alt="The Malou Project Athens Studio Atelier - Sculptural Ceramics and Heavywear"
+                src="/images/instagram/insta_02.jpg"
+                alt="The Malou Project Athens Atelier - 5 Sexual Alien Figures Hoodie and Tee"
                 className="w-full h-full object-cover object-center filter contrast-[1.03]"
               />
               <div className="absolute top-4 right-4 bg-[#f5f2eb]/90 backdrop-blur-sm px-3 py-1 text-[9px] font-mono tracking-[0.2em] uppercase text-[#141414] border border-[#e4ded4]">
@@ -120,8 +120,8 @@ export const Hero: React.FC<HeroProps> = ({ onSelectArchetype }) => {
             </div>
 
             <div className="flex justify-between items-center text-[10px] font-mono tracking-[0.18em] text-[#706e68] uppercase px-1">
-              <span>FIG 01. ATELIER DISPATCH — VOLCANIC STONEWARE & BRIDLE LEATHER</span>
-              <span>PLATE REF: MAL-001</span>
+              <span>FIG 01. ATELIER ARCHIVE — 5 SEXUAL ALIEN FIGURES HOODIE & TEE (ATHENS, GR)</span>
+              <span>PLATE REF: MAL-TSH-001</span>
             </div>
           </div>
         </div>

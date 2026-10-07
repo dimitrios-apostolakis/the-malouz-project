@@ -10,11 +10,11 @@ interface ArchetypeCodexProps {
 }
 
 const ARCHETYPE_IMAGES: Record<AlienArchetype, string> = {
-  radients: '/images/tshirt_radient.jpg',
-  orients: '/images/tshirt_orient.jpg',
-  naviens: '/images/tshirt_navien.jpg',
-  certiens: '/images/tshirt_certien.jpg',
-  lviens: '/images/tshirt_lvien.jpg',
+  radients: '/images/instagram/insta_01.jpg',
+  orients: '/images/instagram/insta_02.jpg',
+  naviens: '/images/instagram/insta_10.jpg',
+  certiens: '/images/instagram/insta_03.jpg',
+  lviens: '/images/instagram/insta_09.jpg',
 };
 
 export const ArchetypeCodex: React.FC<ArchetypeCodexProps> = ({

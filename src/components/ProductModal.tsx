@@ -169,11 +169,23 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 )}
               </button>
 
+              {product.instagramUrl && (
+                <a
+                  href={product.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-4 border border-[#e4ded4] bg-[#f5f2eb] text-[#141414] hover:border-[#141414] font-mono text-[11px] tracking-[0.18em] uppercase transition-all flex items-center justify-center gap-2"
+                >
+                  <Instagram className="w-3.5 h-3.5 text-[#706e68]" />
+                  <span>View Original Post on Instagram</span>
+                </a>
+              )}
+
               <a
-                href={`https://www.instagram.com/mmalouz?stkn=MWV0em5hdGxzZHNpbA==`}
+                href="https://www.instagram.com/direct/t/mmalouz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 px-4 border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-[#f5f2eb] font-mono text-[11px] tracking-[0.18em] uppercase transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 border border-[#141414] bg-[#141414] text-[#f5f2eb] hover:bg-[#33312e] font-mono text-[11px] tracking-[0.18em] uppercase transition-all flex items-center justify-center gap-2"
               >
                 <Instagram className="w-3.5 h-3.5" />
                 <span>DM Malou on Instagram (@mmalouz)</span>
