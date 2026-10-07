@@ -1,0 +1,90 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  # =========================================================================
+  # STAGE 1: FRONTEND QUALITY GATE (LINT, TYPECHECK, TEST, BUILD)
+  # =========================================================================
+  frontend-test-and-build:
+    name: Frontend Test and Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run TypeScript typecheck
+        run: npm run typecheck
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Run verification test suite
+        run: npm test
+
+  # =========================================================================
+  # STAGE 2: PRODUCTION DEPLOYMENT (VERCEL)
+  # =========================================================================
+  deploy-production:
+    name: Deploy to Production (Vercel)
+    needs: [frontend-test-and-build]
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          echo "=================================================="
+          echo "🚀 VERCEL PRODUCTION DEPLOYMENT"
+          echo "=================================================="
+          if [ -n "$VERCEL_TOKEN" ]; then
+            echo "👤 Authenticating Vercel CLI..."
+            npx --yes vercel@latest whoami --token="$VERCEL_TOKEN"
+
+            echo "🌐 Deploying the-malouz-project to Vercel production..."
+            npx --yes vercel@latest deploy --prod --token="$VERCEL_TOKEN" --yes --build-env VERCEL_FORCE_BUILD=1
+            echo "=================================================="
+            echo "✅ VERCEL DEPLOYMENT COMPLETED SUCCESSFULLY"
+            echo "=================================================="
+          else
+            echo "ℹ️ VERCEL_TOKEN not provided in GitHub secrets. Deployment handled by Vercel GitHub integration."
+          fi
