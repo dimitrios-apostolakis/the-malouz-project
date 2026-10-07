@@ -1,7 +1,6 @@
 import React from 'react';
 import { ProductItem } from '../types';
-import { AlienVisual } from './AlienVisuals';
-import { Eye, Plus, Check } from 'lucide-react';
+import { Plus, Check, ArrowUpRight } from 'lucide-react';
 
 interface ProductCardProps {
   product: ProductItem;
@@ -16,130 +15,93 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onSelect,
   onAddToInquiry,
 }) => {
-  const getVisualVariant = (category: string) => {
-    switch (category) {
-      case 'tshirts':
-        return 'tshirt';
-      case 'ceramics':
-        return 'ceramic';
-      case 'bags':
-        return 'bag';
-      case 'drawings':
-        return 'drawing';
-      default:
-        return 'diagram';
-    }
-  };
-
-  const getArchetypeBadgeColor = (archetype: string) => {
-    switch (archetype) {
-      case 'radients':
-        return 'bg-purple-950/70 text-purple-300 border-purple-800';
-      case 'orients':
-        return 'bg-sky-950/70 text-sky-300 border-sky-800';
-      case 'naviens':
-        return 'bg-emerald-950/70 text-emerald-300 border-emerald-800';
-      case 'certiens':
-        return 'bg-amber-950/70 text-amber-300 border-amber-800';
-      case 'lviens':
-        return 'bg-pink-950/70 text-pink-300 border-pink-800';
-      default:
-        return 'bg-malouz-800 text-malouz-300 border-malouz-700';
-    }
-  };
-
   return (
-    <div className="group relative bg-malouz-900/60 border border-malouz-800 rounded-lg overflow-hidden flex flex-col justify-between hover:border-malouz-700 transition-all duration-300 hover:shadow-2xl">
-      {/* Top Specs Bar */}
-      <div className="p-4 border-b border-malouz-800/80 flex items-center justify-between text-[10px] font-mono tracking-wider">
-        <span className="text-malouz-500">{product.code}</span>
-        <span className={`px-2 py-0.5 rounded border uppercase ${getArchetypeBadgeColor(product.archetype)}`}>
-          {product.archetype}
-        </span>
-      </div>
-
-      {/* Visual Canvas Area */}
+    <div className="group bg-[#faf7f2] border border-[#e4ded4] flex flex-col justify-between hover:border-[#141414] transition-all duration-300">
+      {/* Visual Canvas Area with Real Photography */}
       <div
         onClick={() => onSelect(product)}
-        className="relative w-full aspect-[4/5] bg-malouz-950 flex items-center justify-center cursor-pointer overflow-hidden"
+        className="relative w-full aspect-[4/5] bg-[#ede8df] overflow-hidden cursor-pointer"
       >
-        <AlienVisual
-          archetype={product.archetype}
-          variant={getVisualVariant(product.category)}
-          className="transition-transform duration-500 group-hover:scale-105"
+        <img
+          src={product.imageUrl || '/images/hero.jpg'}
+          alt={product.title}
+          className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-500 filter contrast-[1.02]"
         />
 
-        {/* Quick View Overlay on Hover */}
-        <div className="absolute inset-0 bg-malouz-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4 backdrop-blur-[2px]">
-          <span className="flex items-center gap-2 px-4 py-2 rounded bg-malouz-bone text-malouz-950 font-mono text-xs font-bold tracking-wider shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
-            <Eye className="w-3.5 h-3.5" />
-            INSPECT OBJECT
-          </span>
+        {/* Edition Stamp */}
+        <div className="absolute top-3 left-3 bg-[#f5f2eb]/90 backdrop-blur-sm px-2 py-0.5 text-[9px] font-mono tracking-[0.18em] uppercase text-[#141414] border border-[#e4ded4]">
+          {product.code}
         </div>
 
-        {/* Edition Pill */}
-        <div className="absolute bottom-3 left-3 bg-malouz-950/80 border border-malouz-800/80 px-2.5 py-1 rounded text-[9px] font-mono text-malouz-400 backdrop-blur-sm">
-          {product.edition}
+        <div className="absolute top-3 right-3 bg-[#141414]/90 text-[#f5f2eb] px-2 py-0.5 text-[9px] font-mono tracking-[0.18em] uppercase">
+          {product.archetype}
+        </div>
+
+        {/* Hover Inspect Indicator */}
+        <div className="absolute inset-0 bg-[#141414]/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+          <span className="flex items-center gap-1.5 px-3 py-1.5 bg-[#f5f2eb] text-[#141414] font-mono text-[10px] tracking-[0.2em] uppercase font-medium shadow-md">
+            <span>Inspect Object</span>
+            <ArrowUpRight className="w-3 h-3" />
+          </span>
         </div>
       </div>
 
-      {/* Content & Action Area */}
-      <div className="p-5 space-y-4 flex-1 flex flex-col justify-between border-t border-malouz-800/80">
-        <div className="space-y-2">
-          <div className="flex items-start justify-between gap-2">
-            <h3
-              onClick={() => onSelect(product)}
-              className="font-serif text-lg font-bold text-malouz-bone hover:text-malouz-alien transition-colors cursor-pointer leading-snug"
-            >
-              {product.title}
-            </h3>
-            <span className="font-mono text-base font-bold text-malouz-bone whitespace-nowrap">
+      {/* Editorial Content Below Image */}
+      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+        <div className="space-y-1.5">
+          <div className="flex items-baseline justify-between gap-2">
+            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#706e68]">
+              {product.category} / {product.archetype}
+            </span>
+            <span className="font-mono text-sm font-semibold text-[#141414]">
               {product.price}
             </span>
           </div>
 
-          <p className="text-xs text-malouz-400 font-light line-clamp-2 leading-relaxed">
+          <h3
+            onClick={() => onSelect(product)}
+            className="font-serif text-base sm:text-lg font-normal text-[#141414] hover:opacity-75 transition-opacity cursor-pointer leading-snug uppercase tracking-wide"
+          >
+            {product.title}
+          </h3>
+
+          <p className="text-xs text-[#595650] font-light line-clamp-2 leading-relaxed">
             {product.description}
           </p>
 
-          <div className="pt-1 flex flex-wrap gap-1 text-[10px] font-mono text-malouz-500">
-            {product.materials.slice(0, 2).map((mat, i) => (
-              <span key={i} className="bg-malouz-950 px-2 py-0.5 rounded border border-malouz-850">
-                {mat}
-              </span>
-            ))}
+          <div className="text-[10px] font-mono text-[#706e68] pt-1 truncate">
+            {product.materials[0]}
           </div>
         </div>
 
         {/* Bottom Actions */}
-        <div className="pt-3 border-t border-malouz-800/50 flex items-center gap-2">
+        <div className="pt-3 border-t border-[#e4ded4] flex items-center gap-2">
           <button
             onClick={() => onAddToInquiry(product)}
-            className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded font-mono text-xs tracking-wider transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 font-mono text-[11px] tracking-[0.18em] uppercase transition-all ${
               isInInquiry
-                ? 'bg-malouz-alien/20 text-malouz-alien border border-malouz-alien/60'
-                : 'bg-malouz-850 text-malouz-bone border border-malouz-700 hover:bg-malouz-bone hover:text-black hover:border-malouz-bone'
+                ? 'bg-[#141414] text-[#f5f2eb] border border-[#141414]'
+                : 'border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-[#f5f2eb]'
             }`}
           >
             {isInInquiry ? (
               <>
-                <Check className="w-3.5 h-3.5" />
-                <span>IN INQUIRY BAG</span>
+                <Check className="w-3 h-3" />
+                <span>In Inquiry Bag</span>
               </>
             ) : (
               <>
-                <Plus className="w-3.5 h-3.5" />
-                <span>REQUEST / ADD</span>
+                <Plus className="w-3 h-3" />
+                <span>Request / Add</span>
               </>
             )}
           </button>
 
           <button
             onClick={() => onSelect(product)}
-            className="p-2.5 rounded border border-malouz-800 text-malouz-400 hover:text-malouz-bone hover:border-malouz-600 transition-colors"
-            title="Inspect Details"
+            className="px-3 py-2 border border-[#d6cfc2] text-[#706e68] hover:text-[#141414] hover:border-[#141414] transition-colors font-mono text-[10px] tracking-wider uppercase"
           >
-            <Eye className="w-4 h-4" />
+            Details
           </button>
         </div>
       </div>

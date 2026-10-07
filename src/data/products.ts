@@ -21,6 +21,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['alien-figure', 'heavyweight', 'screenprint', 'spinal-art', 'streetwear-couture'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/tshirt_radient.jpg',
   },
   {
     id: 'tee-02-orient',
@@ -39,6 +40,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['orient-geometry', 'asymmetric', 'architectural-cut', 'basalt-wash'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/tshirt_orient.jpg',
   },
   {
     id: 'tee-03-navien',
@@ -57,6 +59,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['navien-abyss', 'bone-white', 'waterbased-ink', 'mock-neck', 'visceral-erotic'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/tshirt_navien.jpg',
   },
   {
     id: 'tee-04-certien',
@@ -75,6 +78,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['certien-armor', 'pitch-black', '3d-silicone', 'heavy-weight', 'brutalist'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/tshirt_certien.jpg',
   },
   {
     id: 'tee-05-lvien',
@@ -93,6 +97,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['lvien-levitation', 'hand-painted', 'cocoon-cut', 'zero-g', 'limited-atelier'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/tshirt_lvien.jpg',
   },
 
   // ==========================================
@@ -115,6 +120,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['waxed-canvas', 'copper-rivets', 'heavy-duty', 'architectural-bag', 'handmade'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/bag_monolith.jpg',
   },
   {
     id: 'bag-02-biomorphic',
@@ -133,6 +139,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['leather-craft', 'wet-molded', 'cobra-buckle', 'carapace', 'bespoke-atelier'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/bag_monolith.jpg',
   },
   {
     id: 'bag-03-relic',
@@ -151,6 +158,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['ceramic-hardware', 'stonewashed-canvas', 'duffel', 'navien-toggles'],
     inStock: true,
     featured: false,
+    imageUrl: '/images/bag_monolith.jpg',
   },
 
   // ==========================================
@@ -173,6 +181,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['sculptural-ceramics', 'volcanic-stoneware', 'pelvic-form', 'original-oneoff', 'cone-10'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/ceramics_vessel.jpg',
   },
   {
     id: 'cer-02-form-14',
@@ -191,6 +200,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['pit-fired', 'smoke-reduction', 'radient-crater', 'tactile-earth'],
     inStock: true,
     featured: false,
+    imageUrl: '/images/ceramics_vessel.jpg',
   },
   {
     id: 'cer-03-chalice-certien',
@@ -209,6 +219,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['chalice', 'brutalist-tableware', 'certien-stem', 'carved-terracotta'],
     inStock: true,
     featured: false,
+    imageUrl: '/images/ceramics_vessel.jpg',
   },
   {
     id: 'cer-04-slab-orient',
@@ -227,6 +238,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['slab-ceramics', 'orient-dish', 'black-stoneware', 'ritual-object'],
     inStock: true,
     featured: false,
+    imageUrl: '/images/ceramics_vessel.jpg',
   },
 
   // ==========================================
@@ -249,6 +261,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['original-art', 'sumi-ink', 'arches-paper', 'architectural-eroticism', 'master-study'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/drawing_erotic.jpg',
   },
   {
     id: 'drw-02-anatomy-orient',
@@ -267,6 +280,7 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['technical-drawing', 'orient-anatomy', 'carbon-transfer', 'gallery-work'],
     inStock: true,
     featured: false,
+    imageUrl: '/images/drawing_erotic.jpg',
   },
   {
     id: 'drw-03-lvien-folio',
@@ -285,5 +299,6 @@ export const PRODUCTS: ProductItem[] = [
     tags: ['archival-prints', 'hahnemuehle', 'alien-codex', 'box-set', 'collector-folio'],
     inStock: true,
     featured: true,
+    imageUrl: '/images/drawing_erotic.jpg',
   },
 ];

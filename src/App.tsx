@@ -77,7 +77,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-malouz-950 text-malouz-bone selection:bg-malouz-alien/30 selection:text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-[#f5f2eb] text-[#141414] selection:bg-[#141414] selection:text-[#f5f2eb] flex flex-col font-sans">
       {/* Navigation Bar */}
       <Navbar
         inquiryCount={inquiryItems.reduce((acc, i) => acc + i.quantity, 0)}

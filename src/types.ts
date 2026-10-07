@@ -19,6 +19,7 @@ export interface ProductItem {
   tags: string[];
   inStock: boolean;
   featured?: boolean;
+  imageUrl?: string;
 }
 
 export interface ArchetypeDetail {

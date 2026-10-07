@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ALIEN_ARCHETYPES } from '../data/alienArchetypes';
 import { AlienArchetype } from '../types';
-import { AlienVisual } from './AlienVisuals';
-import { Compass, Sparkles, ArrowRight, Layers } from 'lucide-react';
+import { ArrowRight, Compass } from 'lucide-react';
 
 interface ArchetypeCodexProps {
   selectedArchetype: AlienArchetype;
   onSelectArchetype: (archetype: AlienArchetype) => void;
   onFilterProductsByArchetype: (archetype: AlienArchetype) => void;
 }
+
+const ARCHETYPE_IMAGES: Record<AlienArchetype, string> = {
+  radients: '/images/tshirt_radient.jpg',
+  orients: '/images/tshirt_orient.jpg',
+  naviens: '/images/tshirt_navien.jpg',
+  certiens: '/images/tshirt_certien.jpg',
+  lviens: '/images/tshirt_lvien.jpg',
+};
 
 export const ArchetypeCodex: React.FC<ArchetypeCodexProps> = ({
   selectedArchetype,
@@ -19,161 +26,153 @@ export const ArchetypeCodex: React.FC<ArchetypeCodexProps> = ({
   const archetypesList: AlienArchetype[] = ['radients', 'orients', 'naviens', 'certiens', 'lviens'];
 
   return (
-    <section id="archetypes" className="py-24 px-4 sm:px-6 lg:px-8 border-b border-malouz-800 bg-malouz-950/90 relative">
+    <section id="archetypes" className="py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e4ded4] bg-[#f5f2eb]">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-malouz-800 pb-8">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-malouz-alien uppercase mb-2">
-              <Layers className="w-4 h-4" />
-              <span>THE ARCHITECTURAL MYTHOS</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-5xl font-black text-malouz-bone tracking-tight">
-              THE 5 SEXUAL ALIEN FIGURES
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#e4ded4] pb-6">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono tracking-[0.25em] text-[#706e68] uppercase block">
+              CANONICAL FIGURE STUDIES
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#141414] tracking-[0.05em] uppercase">
+              The 5 Sexual Alien Figures
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-malouz-300 max-w-2xl font-light">
-              Each piece in The Malouz Project is an artifact of an extraterrestrial sensual entity. 
-              These are not abstract decorations—they are anatomical studies of desire, pressure, and tactile tension.
+            <p className="text-sm sm:text-base text-[#403e39] max-w-2xl font-light leading-relaxed">
+              Every garment and ceramic piece in The Malouz Project is inscribed with one of five extraterrestrial figures:
+              <strong className="font-normal text-[#141414]"> Radients, Orients, Naviens, Certiens, and Lviens</strong>. 
+              These are architectural investigations of tactile desire, pressure, and anatomical tension.
             </p>
           </div>
 
-          <div className="text-xs font-mono text-malouz-muted text-right hidden md:block">
-            CODEX VOL. 1 // ATHENS ATELIER <br />
-            FIGURES: 01 TO 05
+          <div className="text-[10px] font-mono text-[#706e68] tracking-[0.2em] uppercase text-left md:text-right">
+            <span>ATELIER MALOU // ATHENS</span> <br />
+            <span>PLATES 01 — 05</span>
           </div>
         </div>
 
-        {/* Tab Buttons (Horizontal bar) */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3">
-          {archetypesList.map((key) => {
+        {/* Minimal Tab Bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 border-b border-[#e4ded4] pb-2">
+          {archetypesList.map((key, index) => {
             const arch = ALIEN_ARCHETYPES[key];
             const isActive = selectedArchetype === key;
             return (
               <button
                 key={key}
                 onClick={() => onSelectArchetype(key)}
-                className={`p-4 rounded border transition-all text-left flex flex-col justify-between ${
+                className={`py-3 px-4 text-left transition-all border-b-2 flex flex-col justify-between ${
                   isActive
-                    ? 'border-malouz-alien bg-malouz-900 shadow-lg ring-1 ring-malouz-alien/50'
-                    : 'border-malouz-800 bg-malouz-950/60 hover:border-malouz-700 hover:bg-malouz-900/40 text-malouz-400'
+                    ? 'border-[#141414] bg-[#ede8df]/80 text-[#141414]'
+                    : 'border-transparent text-[#706e68] hover:text-[#141414] hover:bg-[#ede8df]/30'
                 }`}
               >
-                <div className="flex items-center justify-between w-full mb-3">
-                  <span className={`text-[10px] font-mono tracking-widest uppercase ${isActive ? 'text-malouz-alien font-bold' : 'text-malouz-600'}`}>
-                    0{archetypesList.indexOf(key) + 1}
-                  </span>
-                  <div className="w-7 h-7">
-                    <AlienVisual archetype={key} variant="glyph" />
-                  </div>
-                </div>
-                <div>
-                  <div className={`font-serif text-base sm:text-lg font-bold tracking-wider ${isActive ? 'text-malouz-bone' : 'text-malouz-300'}`}>
-                    {arch.name}
-                  </div>
-                  <div className="text-[10px] font-mono text-malouz-500 truncate mt-0.5">
-                    {arch.title.split('/')[0].trim()}
-                  </div>
-                </div>
+                <span className="text-[9px] font-mono tracking-[0.2em] uppercase block">
+                  PLATE 0{index + 1}
+                </span>
+                <span className="font-serif text-sm sm:text-base font-medium tracking-wide uppercase mt-1">
+                  {arch.name}
+                </span>
+                <span className="text-[10px] font-mono text-[#706e68] truncate mt-0.5">
+                  {arch.title.split('/')[0].trim()}
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Main Interactive Dossier Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-malouz-900/60 border border-malouz-800 rounded-lg p-6 sm:p-10 backdrop-blur-sm">
-          {/* Left Column: Visual Rendering */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-malouz-950 rounded-lg border border-malouz-800 p-6 relative overflow-hidden">
-            <div className="flex items-center justify-between border-b border-malouz-850 pb-3 mb-6">
-              <span className="text-[10px] font-mono tracking-widest text-malouz-muted uppercase">
-                ANATOMICAL SCHEMATIC // {current.name}
-              </span>
-              <span className="text-[10px] font-mono text-malouz-alien">
-                SCALE: 1:1
-              </span>
+        {/* Dossier Card: Clean Editorial Presentation */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch bg-[#faf7f2] border border-[#e4ded4] p-6 sm:p-10 shadow-sm">
+          {/* Left: Studio Photography */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+            <div className="relative aspect-[4/5] bg-[#ede8df] overflow-hidden border border-[#e4ded4]">
+              <img
+                src={ARCHETYPE_IMAGES[selectedArchetype]}
+                alt={`${current.name} Studio Photograph`}
+                className="w-full h-full object-cover object-center filter contrast-[1.02]"
+              />
+              <div className="absolute top-3 left-3 bg-[#f5f2eb]/90 backdrop-blur-sm px-2.5 py-1 text-[9px] font-mono tracking-[0.2em] uppercase text-[#141414] border border-[#e4ded4]">
+                STUDIO PROOF // {current.name}
+              </div>
             </div>
 
-            <div className="w-full aspect-square flex items-center justify-center p-4">
-              <AlienVisual archetype={selectedArchetype} variant="tshirt" glow={true} />
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-malouz-850 flex items-center justify-between text-xs font-mono">
-              <span className="text-malouz-500">APPLIED ON:</span>
-              <span className="text-malouz-bone font-bold">{current.tshirtFocus}</span>
+            <div className="text-[10px] font-mono tracking-[0.18em] text-[#706e68] uppercase flex justify-between px-1">
+              <span>GARMENT: {current.tshirtFocus}</span>
+              <span>100% COMBED COTTON</span>
             </div>
           </div>
 
-          {/* Right Column: In-Depth Anatomy & Voice */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+          {/* Right: Architectural Monograph Content */}
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
             <div className="space-y-6">
-              <div>
-                <span className="text-xs font-mono tracking-widest text-malouz-alien uppercase block">
+              <div className="border-b border-[#e4ded4] pb-4">
+                <span className="text-[10px] font-mono tracking-[0.25em] text-[#706e68] uppercase block">
                   FIGURE DOSSIER
                 </span>
-                <h3 className="font-serif text-3xl sm:text-4xl font-bold text-malouz-bone tracking-wide mt-1">
+                <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#141414] tracking-wide mt-1 uppercase">
                   {current.name}
                 </h3>
-                <p className="font-mono text-xs sm:text-sm text-malouz-ember tracking-wider mt-1">
+                <p className="font-mono text-xs text-[#706e68] tracking-widest mt-1">
                   {current.title}
                 </p>
               </div>
 
-              {/* Anatomy & Geometry Blocks */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="bg-malouz-950/80 p-4 rounded border border-malouz-800/80">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono text-malouz-muted uppercase tracking-wider mb-1.5">
-                    <Compass className="w-3 h-3 text-malouz-alien" />
+              {/* Anatomy & Geometry */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div className="p-4 bg-[#f5f2eb] border border-[#e4ded4] space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#706e68] uppercase tracking-wider">
+                    <Compass className="w-3 h-3 text-[#141414]" />
                     <span>EROTIC GEOMETRY</span>
                   </div>
-                  <p className="text-xs font-sans text-malouz-200 leading-relaxed">
+                  <p className="text-[#363430] font-light leading-relaxed">
                     {current.eroticGeometry}
                   </p>
                 </div>
 
-                <div className="bg-malouz-950/80 p-4 rounded border border-malouz-800/80">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono text-malouz-muted uppercase tracking-wider mb-1.5">
-                    <Sparkles className="w-3 h-3 text-malouz-alien" />
-                    <span>ANATOMICAL CONCEPT</span>
-                  </div>
-                  <p className="text-xs font-sans text-malouz-200 leading-relaxed">
+                <div className="p-4 bg-[#f5f2eb] border border-[#e4ded4] space-y-1.5">
+                  <span className="text-[10px] font-mono text-[#706e68] uppercase tracking-wider block">
+                    ANATOMICAL CONCEPT
+                  </span>
+                  <p className="text-[#363430] font-light leading-relaxed">
                     {current.anatomicalConcept}
                   </p>
                 </div>
               </div>
 
-              {/* Direct Artist Note from Malou */}
-              <div className="bg-malouz-950 border-l-2 border-malouz-clay p-5 rounded-r">
-                <div className="text-[10px] font-mono tracking-widest text-malouz-clay uppercase mb-2">
-                  DIRECT STATEMENT FROM MALOU (@mmalouz):
-                </div>
-                <blockquote className="font-serif italic text-sm sm:text-base text-malouz-bone leading-relaxed">
-                  {current.philosophicalNote}
+              {/* Artist Statement */}
+              <div className="border-l-2 border-[#141414] pl-4 py-1">
+                <span className="text-[9px] font-mono tracking-[0.2em] text-[#706e68] uppercase block mb-1">
+                  ARTIST NOTE // MALOU:
+                </span>
+                <blockquote className="font-serif italic text-sm sm:text-base text-[#141414] leading-relaxed">
+                  "{current.philosophicalNote}"
                 </blockquote>
               </div>
 
               {/* Tactile Material Expression */}
               <div className="text-xs font-mono space-y-1">
-                <span className="text-malouz-500 uppercase tracking-wider block">TACTILE MANIFESTATION:</span>
-                <p className="text-malouz-300 font-light leading-relaxed">
+                <span className="text-[10px] text-[#706e68] uppercase tracking-[0.2em] block">
+                  TACTILE MANIFESTATION:
+                </span>
+                <p className="text-[#403e39] font-light leading-relaxed">
                   {current.tactileManifestation}
                 </p>
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="pt-6 border-t border-malouz-800 flex flex-wrap items-center gap-4">
+            {/* Actions */}
+            <div className="pt-4 border-t border-[#e4ded4] flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onFilterProductsByArchetype(selectedArchetype)}
-                className="flex items-center gap-2 px-5 py-3 rounded bg-malouz-bone text-malouz-950 font-mono text-xs font-bold tracking-wider hover:bg-malouz-alien hover:text-black transition-all"
+                className="px-6 py-3 bg-[#141414] text-[#f5f2eb] hover:bg-[#33312e] transition-colors font-mono text-[11px] tracking-[0.2em] uppercase font-medium flex items-center gap-2"
               >
-                <span>VIEW ALL {current.name} PIECES IN STORE</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>View {current.name} Collection</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
               <a
                 href="#tshirts"
-                className="px-5 py-3 rounded border border-malouz-700 bg-malouz-950 text-malouz-bone font-mono text-xs tracking-wider hover:border-malouz-500 transition-all"
+                className="px-6 py-3 border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-[#f5f2eb] transition-all font-mono text-[11px] tracking-[0.2em] uppercase font-medium"
               >
-                INSPECT {current.name} T-SHIRT
+                Inspect T-Shirt Piece
               </a>
             </div>
           </div>
