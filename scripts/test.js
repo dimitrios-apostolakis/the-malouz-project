@@ -53,6 +53,18 @@ if (vercelJson.framework !== 'vite' || vercelJson.outputDirectory !== 'dist') {
 }
 console.log('✅ 5. Vercel edge deployment config verified');
 
+// 6. Verify Zero Prices & 20 Instagram Pieces Invariant
+if (productsFile.includes('price:') || productsFile.includes('priceNumber:') || productsFile.includes('€')) {
+  console.error('❌ Invariant violated: prices found in products.ts');
+  process.exit(1);
+}
+const productMatches = productsFile.match(/id:\s*['"]post-\d+/g);
+if (!productMatches || productMatches.length !== 20) {
+  console.error(`❌ Expected 20 products, found ${productMatches ? productMatches.length : 0}`);
+  process.exit(1);
+}
+console.log(`✅ 6. Zero-Price Invariant verified & all 20 curated Instagram editions present`);
+
 console.log('==================================================');
-console.log('🎉 ALL 5 VERIFICATION SUITES PASSED (100% GREEN)');
+console.log('🎉 ALL 6 VERIFICATION SUITES PASSED (100% GREEN)');
 console.log('==================================================');

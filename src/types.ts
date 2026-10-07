@@ -9,8 +9,6 @@ export interface ProductItem {
   slug: string;
   category: 'tshirts' | 'ceramics' | 'bags' | 'drawings';
   archetype: AlienArchetype;
-  price: string;
-  priceNumber: number;
   edition: string;
   materials: string[];
   dimensions: string;

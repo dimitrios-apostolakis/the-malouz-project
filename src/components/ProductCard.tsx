@@ -53,8 +53,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#706e68]">
               {product.category} / {product.archetype}
             </span>
-            <span className="font-mono text-sm font-semibold text-[#141414]">
-              {product.price}
+            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#706e68]">
+              {product.code}
             </span>
           </div>
 

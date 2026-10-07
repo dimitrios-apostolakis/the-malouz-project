@@ -21,7 +21,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<Category>('all');
 
   const categories: { id: Category; label: string; count: number }[] = [
-    { id: 'all', label: 'All 10 Pieces', count: PRODUCTS.length },
+    { id: 'all', label: 'All 20 Pieces', count: PRODUCTS.length },
     { id: 'tshirts', label: 'Clothes & Tees', count: PRODUCTS.filter((p) => p.category === 'tshirts').length },
     { id: 'bags', label: 'Handmade Bags & Pouches', count: PRODUCTS.filter((p) => p.category === 'bags').length },
     { id: 'drawings', label: 'Drawings & Graphics', count: PRODUCTS.filter((p) => p.category === 'drawings').length },
@@ -50,14 +50,14 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#e4ded4] pb-6">
           <div className="space-y-2">
             <span className="text-[10px] font-mono tracking-[0.25em] text-[#706e68] uppercase block">
-              THE 10 LATEST PIECES // DIRECT FROM @MMALOUZ INSTAGRAM
+              THE 20 PIECES // DIRECT FROM @MMALOUZ INSTAGRAM
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#141414] tracking-[0.05em] uppercase">
               Current Collection
             </h2>
             <p className="text-sm sm:text-base text-[#403e39] max-w-2xl font-light leading-relaxed">
-              The 10 latest handmade pieces directly from Malou's Instagram feed (<a href="https://www.instagram.com/mmalouz/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#141414]">@mmalouz</a>). 
-              Hand-screenprinted alien canvas bags, heavyweight hoodies, embroidered garments, and wearable talismanic sculptures from the Athens studio.
+              The 20 curated handmade pieces directly from Malou's Instagram feed (<a href="https://www.instagram.com/mmalouz/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#141414]">@mmalouz</a>). 
+              Hand-screenprinted alien canvas bags, heavyweight hoodies, embroidered garments, architectural drawings, and wearable talismanic sculptures from the Athens studio.
             </p>
           </div>
 

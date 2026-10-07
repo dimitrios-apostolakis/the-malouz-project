@@ -68,8 +68,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   <span className="text-[10px] font-mono tracking-[0.22em] uppercase text-[#706e68]">
                     {product.category} / {product.archetype}
                   </span>
-                  <span className="text-xl font-mono font-bold text-[#141414]">
-                    {product.price}
+                  <span className="text-[11px] font-mono tracking-[0.2em] text-[#706e68] uppercase">
+                    {product.code}
                   </span>
                 </div>
                 <h2 className="font-serif text-2xl sm:text-3xl font-light text-[#141414] tracking-wide uppercase mt-1">

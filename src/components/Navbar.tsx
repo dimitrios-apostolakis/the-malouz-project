@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ inquiryCount, onOpenInquiry }) =
         {/* Minimal Navigation */}
         <nav className="hidden lg:flex items-center gap-8 text-[11px] tracking-[0.22em] uppercase font-medium text-[#403e39]">
           <a href="#catalog" className="hover:text-[#141414] transition-colors py-1">
-            Collection (10)
+            Collection (20)
           </a>
           <a href="#tshirts" className="hover:text-[#141414] transition-colors py-1">
             Clothes & Tees

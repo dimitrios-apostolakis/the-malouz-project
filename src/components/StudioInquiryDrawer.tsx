@@ -25,19 +25,19 @@ export const StudioInquiryDrawer: React.FC<StudioInquiryDrawerProps> = ({
 
   if (!isOpen) return null;
 
-  const totalSum = items.reduce((acc, item) => acc + item.product.priceNumber * item.quantity, 0);
+  const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
 
   const generateInquiryText = () => {
     let text = `Hello Malou (@mmalouz)! I am inquiring regarding pieces from The Malouz Project:\n\n`;
     items.forEach((item, idx) => {
       text += `${idx + 1}. ${item.product.title} [${item.product.code}]\n`;
-      text += `   - Price: ${item.product.price} (Qty: ${item.quantity})\n`;
+      text += `   - Quantity: ${item.quantity}\n`;
       if (item.selectedSize) {
         text += `   - Size: ${item.selectedSize}\n`;
       }
       text += `   - Archetype: ${item.product.archetype}\n\n`;
     });
-    text += `Estimated Total: €${totalSum}\n`;
+    text += `Total Pieces: ${totalQuantity}\n`;
     if (name) text += `Name: ${name}\n`;
     if (handle) text += `Instagram: @${handle.replace('@', '')}\n`;
     if (city) text += `Location: ${city}\n`;
@@ -125,8 +125,8 @@ export const StudioInquiryDrawer: React.FC<StudioInquiryDrawerProps> = ({
                         <span className="font-mono text-[9px] text-[#706e68] uppercase">
                           {item.product.code}
                         </span>
-                        <span className="font-mono text-xs font-semibold text-[#141414]">
-                          {item.product.price}
+                        <span className="font-mono text-[9px] text-[#706e68] uppercase">
+                          {item.product.category}
                         </span>
                       </div>
                       <h4 className="font-serif text-sm font-normal text-[#141414] truncate uppercase">
@@ -165,8 +165,8 @@ export const StudioInquiryDrawer: React.FC<StudioInquiryDrawerProps> = ({
                   Clear all items
                 </button>
                 <div className="text-right">
-                  <span className="text-[#706e68] text-[10px] tracking-wider block uppercase">ESTIMATED TOTAL:</span>
-                  <span className="font-serif text-lg font-normal text-[#141414]">€{totalSum}</span>
+                  <span className="text-[#706e68] text-[10px] tracking-wider block uppercase">INQUIRY ITEMS:</span>
+                  <span className="font-serif text-lg font-normal text-[#141414]">{totalQuantity} PIECES</span>
                 </div>
               </div>
 
